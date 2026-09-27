@@ -1,0 +1,4 @@
+[submodule "vendor/dnd-template"]
+	path = vendor/dnd-template
+	url = https://github.com/risadams/DND-5e-LaTeX-Template.git
+	branch = dev

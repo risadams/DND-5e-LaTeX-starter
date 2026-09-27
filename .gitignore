@@ -1,0 +1,33 @@
+# LaTeX build files
+*.aux
+*.bbl
+*.blg
+*.fdb_latexmk
+*.fls
+*.idx
+*.ilg
+*.ind
+*.lom
+*.log
+*.out
+*.synctex.gz
+*.toc
+*.xdv
+*-dnd.ist
+*.build.tex
+
+# Built books: attach them to a GitHub release or upload them to the store,
+# never commit them. PDFs in art/ and maps/ are art and go to Git LFS.
+/*.pdf
+
+# Downloaded by `make fonts`
+fonts/
+
+# Layered art sources (Photoshop, Krita, Dungeondraft...). Keep them in
+# cloud storage and commit the exported files; see README.md, "Art and Git
+# LFS", to store them in the repository instead.
+art/source/
+maps/source/
+
+.DS_Store
+Thumbs.db

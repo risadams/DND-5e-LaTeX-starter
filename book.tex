@@ -1,0 +1,64 @@
+% The main file of the book: class options, metadata, front matter, the
+% chapters and back matter. Write the chapters in chapters/ and list them
+% below with \include.
+%
+% Build every edition with `make` (see README.md). For a quick draft of the
+% chapters you are working on, list them in \includeonly below.
+\documentclass[letterpaper,twoside,twocolumn,openany,nodeprecatedcode,
+  fonts=solbera,srd=5.1]{dndbook}
+
+\usepackage[english]{babel}
+
+% \includeonly{chapters/02-the-adventure}
+
+\title{The Book Title}
+\author{Your Name}
+\DndSetMetadata{
+  subject  = {An adventure for four to six characters of 1st level},
+  keywords = {D\&D, 5e, adventure},
+}
+
+% The placeholder art comes from the template (vendor/dnd-template/examples/
+% art). Put your own in art/ and point these at it, e.g. art/cover.
+\newcommand{\coverart}{examples/art/cover}
+\newcommand{\backart}{examples/art/back}
+
+\begin{document}
+
+% Front matter: cover, credits and legal, contents. The print service gets
+% the cover as its own file (cover.tex), so the print interior leaves the
+% covers out.
+\DndIfEdition{screen, printer-friendly}{%
+  \DndFrontCover[title=The Book Title,
+    subtitle=An Adventure for Characters of 1st Level,
+    author=Your Name]{\coverart}%
+}{}
+
+\frontmatter
+
+\DndCreditsPage{
+  \DndCredit{design}{Your Name}
+  \DndCredit{editing}{Your Editor}
+  \DndCredit{cover-art}{Placeholder art from the rpgTeX template}
+  \DndCredit{cartography}{The rpgTeX Team}
+  \DndCredit{playtesting}{Your Players}
+}
+
+\tableofcontents
+
+% Main matter: one file per chapter
+\mainmatter
+
+\include{chapters/01-introduction}
+\include{chapters/02-the-adventure}
+
+% Back matter: appendices, handouts, back cover
+\appendix
+
+\include{chapters/appendix-a-monsters}
+
+\DndIfEdition{screen, printer-friendly}{%
+  \DndBackCover[blurb={One or two sentences that sell the book. Who is it for, and what will they find inside?}]{\backart}%
+}{}
+
+\end{document}

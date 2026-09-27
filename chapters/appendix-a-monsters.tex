@@ -1,0 +1,36 @@
+\chapter{Monsters}
+\label{appendix-a}
+
+\begin{DndMonster}{Guard}
+  \DndMonsterType{Medium humanoid (any race), any alignment}
+
+  \DndMonsterBasics[
+      armor-class = {16 (chain shirt, shield)},
+      hit-points  = {\DndDice{2d8 + 2}},
+      speed       = {30 ft.},
+    ]
+
+  \DndMonsterAbilityScores[
+      str = 13, dex = 12, con = 12,
+      int = 10, wis = 11, cha = 10,
+    ]
+
+  \DndMonsterDetails[
+      skills    = {Perception +2},
+      senses    = {passive Perception 12},
+      languages = {any one language (usually Common)},
+      challenge = 1/8,
+    ]
+
+  \DndMonsterSection{Actions}
+  \DndMonsterAttack[
+    name=Spear,
+    distance=both,
+    mod=+3,
+    range=20/60,
+    dmg=\DndDice{1d6+1},
+    dmg-type=piercing,
+    or-dmg=\DndDice{1d8+1},
+    or-dmg-when={if used with two hands to make a melee attack},
+  ]
+\end{DndMonster}

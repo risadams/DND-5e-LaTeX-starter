@@ -1,0 +1,57 @@
+name: Build the book
+
+on:
+  push:
+  pull_request:
+  workflow_dispatch:
+
+concurrency:
+  group: "${{ github.workflow }}-${{ github.head_ref || github.ref }}"
+  cancel-in-progress: true
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    container:
+      image: texlive/texlive:TL2023-historic
+    steps:
+      # git and git-lfs first, so the checkout is a real clone with the
+      # template submodule
+      - name: Install git, Git LFS, make, curl and Poppler
+        run: |
+          apt-get update
+          apt-get install -y --no-install-recommends git git-lfs make curl poppler-utils
+
+      - name: Check out the book and the template
+        uses: actions/checkout@v4
+        with:
+          submodules: true
+
+      # Git LFS downloads count against the repository owner's bandwidth
+      # quota, so keep the art in the Actions cache and only download what
+      # changed
+      - name: List the art stored in Git LFS
+        run: |
+          git config --global --add safe.directory "$GITHUB_WORKSPACE"
+          git lfs install --local
+          git lfs ls-files --long | cut -d ' ' -f1 | sort > .lfs-assets-id
+
+      - name: Restore the art from the cache
+        uses: actions/cache@v4
+        with:
+          path: .git/lfs
+          key: lfs-${{ hashFiles('.lfs-assets-id') }}
+          restore-keys: lfs-
+
+      - name: Download the art
+        run: git lfs pull
+
+      - name: Build and check every edition
+        run: make preflight
+
+      - name: Upload the editions
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: book
+          path: book-*.pdf

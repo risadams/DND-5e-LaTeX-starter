@@ -1,0 +1,28 @@
+# Text files keep LF line endings on every platform
+* text=auto eol=lf
+
+# Art is stored with Git LFS, so the repository keeps small pointer files
+# and the images download only for the commit you check out. Run
+# `git lfs install` once per computer before you add art. See README.md,
+# "Art and Git LFS".
+
+# Exported art and maps
+*.png  filter=lfs diff=lfs merge=lfs -text
+*.jpg  filter=lfs diff=lfs merge=lfs -text
+*.jpeg filter=lfs diff=lfs merge=lfs -text
+*.tif  filter=lfs diff=lfs merge=lfs -text
+*.tiff filter=lfs diff=lfs merge=lfs -text
+*.webp filter=lfs diff=lfs merge=lfs -text
+art/**/*.pdf  filter=lfs diff=lfs merge=lfs -text
+maps/**/*.pdf filter=lfs diff=lfs merge=lfs -text
+
+# Layered sources, if you choose to commit them (art/source/ and
+# maps/source/ are ignored by default)
+*.psd              filter=lfs diff=lfs merge=lfs -text
+*.psb              filter=lfs diff=lfs merge=lfs -text
+*.kra              filter=lfs diff=lfs merge=lfs -text
+*.xcf              filter=lfs diff=lfs merge=lfs -text
+*.afphoto          filter=lfs diff=lfs merge=lfs -text
+*.afdesign         filter=lfs diff=lfs merge=lfs -text
+*.clip             filter=lfs diff=lfs merge=lfs -text
+*.dungeondraft_map filter=lfs diff=lfs merge=lfs -text

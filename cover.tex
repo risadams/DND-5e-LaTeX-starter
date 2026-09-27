@@ -1,0 +1,14 @@
+% Print cover spread: back cover, spine and front cover on one sheet.
+% `make cover` sets the cover, spine and bleed options; take the spine width
+% from your print service's cover calculator, e.g. make cover SPINE=0.3in
+\documentclass[letterpaper,nodeprecatedcode,fonts=solbera]{dndbook}
+
+\begin{document}
+
+\DndCoverSpread[title=The Book Title,
+                subtitle=An Adventure for Characters of 1st Level,
+                author=Your Name,
+                blurb={One or two sentences that sell the book. Who is it for, and what will they find inside?},
+                art=examples/art/cover, back-art=examples/art/back]
+
+\end{document}
