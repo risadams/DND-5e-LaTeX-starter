@@ -41,7 +41,15 @@ texlua vendor/dnd-template/bin/build --engine=xelatex all book.tex
 | [`art/`](art), [`maps/`](maps) | print-ready art and maps (Git LFS) |
 | `vendor/dnd-template/` | the template, as a git submodule; don't edit it here |
 
-The sample book follows the order of the core books: cover, credits and legal page, contents, chapters, appendices, back cover. Replace the placeholder text, title, credits and art. The samples use the template's own placeholder art from `vendor/dnd-template/examples/art`.
+The sample book is laid out like a printed core book:
+
+- **Front and back matter** in the core books' order: cover, title page, credits and legal page on its back, contents and lists of maps and handouts, chapters, appendices, player handouts, back cover.
+- **Chapters start on right-hand pages** (`twoside,openright`). The page before a chapter is left blank without a footer, or holds art with `\DndFacingArt`. Use `openany` to start chapters on any page.
+- **Player handouts:** a letter and the player map appear in the text and again, one per page, in the handout appendix (`\DndHandoutAppendix`).
+
+Replace the placeholder text, title, credits and art. The samples use the template's own placeholder art from `vendor/dnd-template/examples/art`.
+
+For the look of the 2024 core books instead of the 2014 ones, add `style=2024` to the class options (provisional; see the template's README).
 
 To build only the chapters you are working on, uncomment `\includeonly` in `book.tex` and list them. Page numbers and references to the other chapters are kept from the last full build.
 

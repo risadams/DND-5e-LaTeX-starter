@@ -47,5 +47,5 @@ template:
 
 clean:
 	rm -f $(foreach e,screen print printer-friendly cover,\
-	  $(foreach x,pdf log aux toc out fls fdb_latexmk idx ind ilg lom xdv,\
+	  $(foreach x,pdf log aux toc out fls fdb_latexmk idx ind ilg lom loh xdv,\
 	    $(basename $(BOOK))-$(e).$(x))) chapters/*.aux

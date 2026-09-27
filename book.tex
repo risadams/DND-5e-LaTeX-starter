@@ -4,7 +4,11 @@
 %
 % Build every edition with `make` (see README.md). For a quick draft of the
 % chapters you are working on, list them in \includeonly below.
-\documentclass[letterpaper,twoside,twocolumn,openany,nodeprecatedcode,
+%
+% twoside,openright: chapters start on right-hand pages, as in a printed
+% book. The page before a chapter is left blank (no footer), or holds art
+% with \DndFacingArt. Use openany to start chapters on any page.
+\documentclass[letterpaper,twoside,twocolumn,openright,nodeprecatedcode,
   fonts=solbera,srd=5.1]{dndbook}
 
 \usepackage[english]{babel}
@@ -12,6 +16,7 @@
 % \includeonly{chapters/02-the-adventure}
 
 \title{The Book Title}
+\DndSubtitle{An Adventure for Characters of 1st Level}
 \author{Your Name}
 \DndSetMetadata{
   subject  = {An adventure for four to six characters of 1st level},
@@ -25,9 +30,10 @@
 
 \begin{document}
 
-% Front matter: cover, credits and legal, contents. The print service gets
-% the cover as its own file (cover.tex), so the print interior leaves the
-% covers out.
+% Front matter, in the order of the core books: cover, title page, credits
+% and legal page (on the back of the title page), contents, list of maps.
+% The print service gets the cover as its own file (cover.tex), so the
+% print interior leaves the covers out.
 \DndIfEdition{screen, printer-friendly}{%
   \DndFrontCover[title=The Book Title,
     subtitle=An Adventure for Characters of 1st Level,
@@ -35,6 +41,8 @@
 }{}
 
 \frontmatter
+
+\maketitle
 
 \DndCreditsPage{
   \DndCredit{design}{Your Name}
@@ -45,6 +53,8 @@
 }
 
 \tableofcontents
+\DndListOfMaps
+\DndListOfHandouts
 
 % Main matter: one file per chapter
 \mainmatter
@@ -52,10 +62,13 @@
 \include{chapters/01-introduction}
 \include{chapters/02-the-adventure}
 
-% Back matter: appendices, handouts, back cover
+% Back matter: appendices, player handouts, back cover
 \appendix
 
 \include{chapters/appendix-a-monsters}
+
+% Every handout and player map marked `appendix`, one per page
+\DndHandoutAppendix
 
 \DndIfEdition{screen, printer-friendly}{%
   \DndBackCover[blurb={One or two sentences that sell the book. Who is it for, and what will they find inside?}]{\backart}%

@@ -1,3 +1,6 @@
+% Art on the left-hand page facing the chapter opener (left out of the
+% printer-friendly edition)
+\DndFacingArt{examples/art/part}
 \chapter{The Adventure}
 
 \section{Locations}
@@ -12,8 +15,18 @@ The areas below are numbered on \DndMapRef{ruins}.
   \DndMapSubArea{0.55,0.78}{Tower}
 \end{DndMap}
 
+% The player version of the map, full page in the handout appendix
+\DndPlayerMap[appendix]{ruins}
+
 \DndArea{Gatehouse}
-Describe the first area. A character who succeeds on a \DndSkillCheck{Wisdom}{Perception}{12} notices something the others miss.
+Describe the first area. A character who succeeds on a \DndSkillCheck{Wisdom}{Perception}{12} notices something the others miss: a letter (\DndHandoutRef{letter}). Show the players the ruins on \DndHandoutRef{ruins}.
+
+% A handout shown here and again, full page, in the handout appendix
+\begin{DndHandout}[style=letter, title={A Letter in the Gatehouse}, label=letter, appendix]
+  Whoever reads this: do not go into the hall after dark.
+
+  \hfill --- the last guard
+\end{DndHandout}
 
 \DndArea{Great Hall}
 Describe the second area. Two \emph{guards} (see appendix~\ref{appendix-a}) wait here.
